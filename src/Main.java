@@ -36,16 +36,10 @@ public class Main {
         setColumns(columns, headerRow);
         int rowNum = 1;
         fillExcelSheet(MoviesTitles, sheet, rowNum);
-        resizeColumns(columns, sheet);
+        sheet.autoSizeColumn(1);
         FileOutputStream fileOut = saveExcelSheet(workbook);
         fileOut.close();
         workbook.close();
-    }
-
-    private static void resizeColumns(String[] columns, Sheet sheet) {
-        for(int i = 0; i < columns.length; i++) {
-            sheet.autoSizeColumn(i);
-        }
     }
 
     private static FileOutputStream saveExcelSheet(Workbook workbook) throws IOException {
